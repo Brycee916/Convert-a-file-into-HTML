@@ -56,7 +56,7 @@ public class HTMLGenerator{
 
             //determine if file is empty
             try{
-                line = fileIn.nextLine();//read the first line
+                line = "            " + fileIn.nextLine();//read the first line
             }
             catch(NoSuchElementException e){
                 System.out.println("Error:  " + e.getMessage());
@@ -67,27 +67,27 @@ public class HTMLGenerator{
             else{
                 //read each line and insert <tags>
                 fileOut.println("<html>");
-                fileOut.println("<head>");
-                fileOut.println("</head>");
-                fileOut.println("<body>");
+                fileOut.println("   <head>");
+                fileOut.println("   </head>");
+                fileOut.println("       <body>");
                 fileOut.println(line);
 
                 //continuously read file contents until empty
                 while(fileIn.hasNextLine()){
-                    fileOut.println("<br>");//move to next line on webpage
+                    fileOut.println("           <br>");//move to next line on webpage
                     line = fileIn.nextLine(); //gets the line from the input file
                     
                     if(line.isEmpty()){//if the line has no contents then print a empty line in html doc
                         fileOut.println("<br>");
                     }
                     else{//otherwise print the line
-                        fileOut.println(line);
+                        fileOut.println("           " + line);
                     }
                 }
                 //once file has been read through
-                fileOut.println("</body>");
+                fileOut.println("       </body>");
                 fileOut.println("</html>");
-                System.out.println("HTML file has been processed");
+                System.out.println("Your html file has now been processed");
             }
             fileIn.close();
             fileOut.close();
